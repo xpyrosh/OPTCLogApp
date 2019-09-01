@@ -8,18 +8,19 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
-class UnitAdapter : RecyclerView.Adapter<UnitAdapter.UnitViewHolder>() {
+class UnitAdapter(var legends: List<String>) : RecyclerView.Adapter<UnitAdapter.UnitViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UnitViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.units, parent, false)
         return UnitViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        return 20
+        return legends.size
     }
 
     override fun onBindViewHolder(unitHolder: UnitViewHolder, position: Int) {
-        unitHolder.txtName.text = "Position $position"
+        unitHolder.txtName.text = legends[position]
     }
 
     inner class UnitViewHolder(view: View) : RecyclerView.ViewHolder(view) {

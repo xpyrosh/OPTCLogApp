@@ -14,17 +14,21 @@
 
         <ImageView
                 android:id="@+id/imgThumbnail"
-                android:layout_width="113dp"
-                android:layout_height="113dp"
-                app:srcCompat="@drawable/goldposter" />
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:srcCompat="@drawable/f2446" />
 
         <TextView
                 android:id="@+id/textName"
+                android:textStyle="bold"
                 android:layout_width="75dp"
                 android:layout_height="30dp"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
                 android:text="Test Text"
-                app:layout_constraintTop_toBottomOf="@+id/imgThumbnail"
-                tools:layout_editor_absoluteX="16dp" />
+                app:layout_constraintEnd_toEndOf="@+id/imgThumbnail"
+                app:layout_constraintStart_toStartOf="@+id/imgThumbnail"
+                tools:layout_editor_absoluteY="0dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
