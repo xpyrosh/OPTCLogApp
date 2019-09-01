@@ -1,6 +1,7 @@
 package com.example.optclogapp
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
@@ -29,6 +30,7 @@ class UnitMenuAcitivty : AppCompatActivity(){
             Log.d("OPTCLog", "Legend Click Event")
             Toast.makeText(this, "Legend Units", Toast.LENGTH_SHORT).show()
             legendImage.setImageResource(R.drawable.legendposter2)
+            startActivity(Intent(this, UnitRecycler::class.java ))
         }
 
         lrrImage.setOnClickListener{
