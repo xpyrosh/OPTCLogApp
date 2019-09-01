@@ -16,19 +16,23 @@
                 android:id="@+id/imgThumbnail"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                app:srcCompat="@drawable/f2446" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
         <TextView
                 android:id="@+id/textName"
-                android:textStyle="bold"
                 android:layout_width="75dp"
                 android:layout_height="30dp"
-                android:textColor="#FFFFFF"
                 android:gravity="center"
                 android:text="Test Text"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/imgThumbnail"
                 app:layout_constraintStart_toStartOf="@+id/imgThumbnail"
-                tools:layout_editor_absoluteY="0dp" />
+                app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
