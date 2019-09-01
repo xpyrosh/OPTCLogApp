@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlin.math.log
 
-class UnitMenuAcitivty : AppCompatActivity(){
+class UnitMenuActivity : AppCompatActivity(){
     lateinit var legendImage : ImageView
     lateinit var lrrImage : ImageView
     lateinit var rrImage : ImageView

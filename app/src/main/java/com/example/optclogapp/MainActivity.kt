@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         btnLogin = findViewById(R.id.btnLogin)
         btnLogin.setOnClickListener{
             Log.d("OPTCLog", "Login Button Pressed")
-            startActivity(Intent(this, UnitMenuAcitivty::class.java))
+            startActivity(Intent(this, UnitMenuActivity::class.java))
         }
     }
 }

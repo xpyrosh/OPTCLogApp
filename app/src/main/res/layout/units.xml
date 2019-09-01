@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent" android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="278dp">
 
-    <androidx.cardview.widget.CardView
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="278dp" >
-        <GridView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            android:layout_height="wrap_content">
 
-                <TextView
-                        android:id="@+id/textName"
-                        android:text="Test Text"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
-        </GridView>
-    </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+                android:id="@+id/imgThumbnail"
+                android:layout_width="113dp"
+                android:layout_height="113dp"
+                app:srcCompat="@drawable/goldposter" />
+
+        <TextView
+                android:id="@+id/textName"
+                android:layout_width="75dp"
+                android:layout_height="30dp"
+                android:text="Test Text"
+                app:layout_constraintTop_toBottomOf="@+id/imgThumbnail"
+                tools:layout_editor_absoluteX="16dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
