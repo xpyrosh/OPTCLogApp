@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
+import androidx.appcompat.app.AlertDialog
 import com.squareup.picasso.Picasso
 
 class MainActivity : AppCompatActivity() {
@@ -24,7 +25,18 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, UnitMenuActivity::class.java))
         }
 
-        Picasso.get().load("http://onepiece-treasurecruise.com/en/wp-content/uploads/sites/2/f2631.png").into(imgView)
+        val builder = AlertDialog.Builder(this)
+        val dialogView = layoutInflater.inflate(R.layout.art_popup, null)
+        val imgArt = dialogView.findViewById<ImageView>(R.id.imgArt)
+        Picasso.get().load("https://vignette.wikia.nocookie.net/onepiecetreasurecruiseglobal/images/6/6e/C2446.png/").into(imgArt)
+        builder.setView(dialogView)
+
+        Picasso.get().load("https://www.barnesandnoble.com/blog/sci-fi-fantasy/wp-content/uploads/sites/4/2017/07/onepiece2.jpg").into(imgView)
+
+        imgView.setOnClickListener{
+            builder.show()
+        }
+        
 
     }
 }

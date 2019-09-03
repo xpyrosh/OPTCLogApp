@@ -1,11 +1,14 @@
 package com.example.optclogapp
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import java.io.InputStream
@@ -25,7 +28,7 @@ class UnitAdapter(var legends: List<String>) : RecyclerView.Adapter<UnitAdapter.
     override fun onBindViewHolder(unitHolder: UnitViewHolder, position: Int) {
         unitHolder.txtName.text = legends[position]
         val digit = unitHolder.txtName.text
-        val url = "http://onepiece-treasurecruise.com/en/wp-content/uploads/sites/2/f$digit.png"
+        val url = "https://vignette.wikia.nocookie.net/onepiecetreasurecruiseglobal/images/5/54/F2446.png/"
         Picasso.get().load(url).into(unitHolder.imgThumbnail)
     }
 
