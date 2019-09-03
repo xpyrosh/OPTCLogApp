@@ -7,12 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import java.io.InputStream
-import java.net.URL
+
 
 class UnitAdapter(var legends: List<String>) : RecyclerView.Adapter<UnitAdapter.UnitViewHolder>() {
 
@@ -29,6 +30,12 @@ class UnitAdapter(var legends: List<String>) : RecyclerView.Adapter<UnitAdapter.
         unitHolder.txtName.text = legends[position]
         val digit = unitHolder.txtName.text
         val url = "https://vignette.wikia.nocookie.net/onepiecetreasurecruiseglobal/images/5/54/F2446.png/"
+
+        unitHolder.imgThumbnail.setOnClickListener{
+            val fragManager = supportFragmentManager
+            val artFrag = ArtFragment()
+        }
+
         Picasso.get().load(url).into(unitHolder.imgThumbnail)
     }
 
