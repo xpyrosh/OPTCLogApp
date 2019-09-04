@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:background="#1A1919">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent">
 
         <ImageView
                 android:id="@+id/imgArt"
-                android:layout_width="400dp"
-                android:layout_height="400dp"
-                android:layout_gravity="fill_horizontal"
-                 />
-</RelativeLayout>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/unitNumber"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center_horizontal"/>
+</LinearLayout>

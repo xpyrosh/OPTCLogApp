@@ -31,9 +31,11 @@ class UnitAdapter(var legends: List<String>) : RecyclerView.Adapter<UnitAdapter.
         val digit = unitHolder.txtName.text
         val url = "https://vignette.wikia.nocookie.net/onepiecetreasurecruiseglobal/images/5/54/F2446.png/"
 
-        unitHolder.imgThumbnail.setOnClickListener{
-            val fragManager = supportFragmentManager
+        unitHolder.imgThumbnail.setOnClickListener{ v ->
+
             val artFrag = ArtFragment()
+            artFrag.modifyArt(legends[position])
+            artFrag.show((v.context as UnitRecycler).supportFragmentManager, "art")
         }
 
         Picasso.get().load(url).into(unitHolder.imgThumbnail)
