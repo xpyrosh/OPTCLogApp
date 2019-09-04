@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
         //val fragManager = supportFragmentManager
         //val artFrag = ArtFragment()
 
-
         Picasso.get().load("https://www.barnesandnoble.com/blog/sci-fi-fantasy/wp-content/uploads/sites/4/2017/07/onepiece2.jpg").into(imgView)
 
         imgView.setOnClickListener{

@@ -40,8 +40,12 @@ class UnitAdapter(var legends: List<Units>) : RecyclerView.Adapter<UnitAdapter.U
 
         unitHolder.imgThumbnail.setOnClickListener{ v ->
 
-            val checking = (v.context as UnitRecycler).findViewById<Switch>(R.id.switch1).isChecked
+            var unitRec = (v.context as UnitRecycler)
+            val checking = unitRec.findViewById<Switch>(R.id.switch1).isChecked
             Log.d("OPTC Log", "Testing toggle status : $checking")
+            unitRec.findViewById<TextView>(R.id.txtPID).text = "999 000 999"
+            unitRec.findViewById<TextView>(R.id.txtPLVL).text = "500"
+            unitRec.findViewById<TextView>(R.id.txtLegs).text = legends[position].unitId
 
             artFrag.modifyArt(legends[position].unitId, legends[position].artWork)
             artFrag.show((v.context as UnitRecycler).supportFragmentManager, "art")

@@ -1,6 +1,7 @@
 package com.example.optclogapp
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -159,6 +160,7 @@ class UnitRecycler : AppCompatActivity(){
                 "https://vignette.wikia.nocookie.net/onepiecetreasurecruiseglobal/images/8/86/C5026.png")
         )
 
+        val currentUser = listOf<String>("999 888 777", "500", "40/70")
 
         setContentView(R.layout.unit_recycler)
 
@@ -166,6 +168,10 @@ class UnitRecycler : AppCompatActivity(){
             recycler.layoutManager = GridLayoutManager(this, 4, RecyclerView.VERTICAL, false)
             recycler.adapter = UnitAdapter(legends)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
     }
 
 }

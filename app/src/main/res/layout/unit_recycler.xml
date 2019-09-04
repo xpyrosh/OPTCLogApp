@@ -39,4 +39,35 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/unitRecycleView"
             app:layout_constraintVertical_bias="0.684" />
+
+    <TextView
+            android:id="@+id/txtPLVL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PLVL"
+            app:layout_constraintBottom_toTopOf="@+id/unitRecycleView"
+            app:layout_constraintEnd_toStartOf="@+id/txtLegs"
+            app:layout_constraintHorizontal_bias="0.543"
+            app:layout_constraintStart_toEndOf="@+id/txtPID"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:id="@+id/txtPID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="PID"
+            app:layout_constraintBottom_toTopOf="@+id/unitRecycleView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:id="@+id/txtLegs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:text="40/70"
+            app:layout_constraintBottom_toTopOf="@+id/unitRecycleView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
