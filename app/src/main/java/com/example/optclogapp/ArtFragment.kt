@@ -14,7 +14,8 @@ import com.squareup.picasso.Picasso
 
 class ArtFragment : DialogFragment() {
 
-    lateinit var unit: String
+    lateinit var unit1: String
+    lateinit var url1: String
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,11 +30,11 @@ class ArtFragment : DialogFragment() {
         val size = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 400f, imgArt.resources.displayMetrics).toInt()
 
         Picasso.get()
-            .load("https://vignette.wikia.nocookie.net/onepiecetreasurecruiseglobal/images/6/6e/C2446.png/")
+            .load(url1)
             .resize(size, size)
             .centerInside()
             .into(imgArt)
-        unitNumber.setText(unit)
+        unitNumber.setText(unit1)
         return rootView
     }
 
@@ -42,7 +43,8 @@ class ArtFragment : DialogFragment() {
         dialog?.window?.decorView?.background = null
     }
 
-    fun modifyArt(url: String){
-        unit = url
+    fun modifyArt(unit: String, url: String){
+        unit1 = unit
+        url1 = url
     }
 }

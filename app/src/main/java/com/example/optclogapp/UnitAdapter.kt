@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
 
-class UnitAdapter(var legends: List<String>) : RecyclerView.Adapter<UnitAdapter.UnitViewHolder>() {
+class UnitAdapter(var legends: List<Units>) : RecyclerView.Adapter<UnitAdapter.UnitViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UnitViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.units, parent, false)
@@ -27,18 +27,19 @@ class UnitAdapter(var legends: List<String>) : RecyclerView.Adapter<UnitAdapter.
     }
 
     override fun onBindViewHolder(unitHolder: UnitViewHolder, position: Int) {
-        unitHolder.txtName.text = legends[position]
+
+        val artFrag = ArtFragment()
+
+        unitHolder.txtName.text = legends[position].unitId
         val digit = unitHolder.txtName.text
-        val url = "https://vignette.wikia.nocookie.net/onepiecetreasurecruiseglobal/images/5/54/F2446.png/"
+        //val url = "https://vignette.wikia.nocookie.net/onepiecetreasurecruiseglobal/images/5/54/F2446.png/"
+        Picasso.get().load(legends[position].thumbnailIcon).into(unitHolder.imgThumbnail)
 
         unitHolder.imgThumbnail.setOnClickListener{ v ->
 
-            val artFrag = ArtFragment()
-            artFrag.modifyArt(legends[position])
+            artFrag.modifyArt(legends[position].unitId, legends[position].artWork)
             artFrag.show((v.context as UnitRecycler).supportFragmentManager, "art")
         }
-
-        Picasso.get().load(url).into(unitHolder.imgThumbnail)
     }
 
     inner class UnitViewHolder(view: View) : RecyclerView.ViewHolder(view) {
