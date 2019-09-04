@@ -2,11 +2,14 @@ package com.example.optclogapp
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Switch
 import android.widget.TextView
+import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.DialogFragment
@@ -36,6 +39,9 @@ class UnitAdapter(var legends: List<Units>) : RecyclerView.Adapter<UnitAdapter.U
         Picasso.get().load(legends[position].thumbnailIcon).into(unitHolder.imgThumbnail)
 
         unitHolder.imgThumbnail.setOnClickListener{ v ->
+
+            val checking = (v.context as UnitRecycler).findViewById<Switch>(R.id.switch1).isChecked
+            Log.d("OPTC Log", "Testing toggle status : $checking")
 
             artFrag.modifyArt(legends[position].unitId, legends[position].artWork)
             artFrag.show((v.context as UnitRecycler).supportFragmentManager, "art")

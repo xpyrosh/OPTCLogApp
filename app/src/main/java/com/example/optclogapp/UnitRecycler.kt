@@ -159,10 +159,6 @@ class UnitRecycler : AppCompatActivity(){
                 "https://vignette.wikia.nocookie.net/onepiecetreasurecruiseglobal/images/8/86/C5026.png")
         )
 
-        /*  
-            "2148", "2181", "2201", "2234", "2236", "2251", "2265", "2302", "2330", "2338", "2365",
-            "2418", "2433", "2441", "2446", "2465", "2475", "2477", "2577", "3334", "3346")*/
-
 
         setContentView(R.layout.unit_recycler)
 
