@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
 
-class UnitAdapter(var legends: List<Units>) : RecyclerView.Adapter<UnitAdapter.UnitViewHolder>() {
+class UnitAdapter(var legends: List<Units>, var user: Users) : RecyclerView.Adapter<UnitAdapter.UnitViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UnitViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.units, parent, false)
@@ -42,10 +42,13 @@ class UnitAdapter(var legends: List<Units>) : RecyclerView.Adapter<UnitAdapter.U
 
             var unitRec = (v.context as UnitRecycler)
             val checking = unitRec.findViewById<Switch>(R.id.switch1).isChecked
+            if (checking){
+                user.updateNakama()
+            }
             Log.d("OPTC Log", "Testing toggle status : $checking")
-            unitRec.findViewById<TextView>(R.id.txtPID).text = "999 000 999"
-            unitRec.findViewById<TextView>(R.id.txtPLVL).text = "500"
-            unitRec.findViewById<TextView>(R.id.txtLegs).text = legends[position].unitId
+            //unitRec.findViewById<TextView>(R.id.txtPID).text = user.pID
+            //unitRec.findViewById<TextView>(R.id.txtPLVL).text = user.pLVL
+            unitRec.findViewById<TextView>(R.id.txtLegs).text = user.legendsOwned.toString()
 
             artFrag.modifyArt(legends[position].unitId, legends[position].artWork)
             artFrag.show((v.context as UnitRecycler).supportFragmentManager, "art")
