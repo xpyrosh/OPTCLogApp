@@ -11,7 +11,7 @@ data class Units (var unitId: String, var thumbnailIcon: String, var artWork: St
 data class Users (var userName: String, var pLVL: String, var pID: String){
     var legendsOwned: Int = 0
     fun updateNakama(){
-        legendsOwned++
+        this.legendsOwned++
     }
 }
 
