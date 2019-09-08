@@ -2,6 +2,9 @@ package com.example.optclogapp
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.graphics.Color
+import android.graphics.LightingColorFilter
+import android.graphics.PorterDuff
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +15,7 @@ import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
@@ -44,7 +48,12 @@ class UnitAdapter(var legends: List<Units>, var user: Users) : RecyclerView.Adap
             val checking = unitRec.findViewById<Switch>(R.id.switch1).isChecked
             if (checking){
                 user.updateNakama()
+                unitHolder.imgThumbnail.setColorFilter(LightingColorFilter(0,255))
             }
+            else{
+                unitHolder.imgThumbnail.clearColorFilter()
+            }
+
             Log.d("OPTC Log", "Testing toggle status : $checking")
             //unitRec.findViewById<TextView>(R.id.txtPID).text = user.pID
             //unitRec.findViewById<TextView>(R.id.txtPLVL).text = user.pLVL

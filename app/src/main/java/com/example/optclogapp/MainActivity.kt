@@ -1,6 +1,7 @@
 package com.example.optclogapp
 
 import android.content.Intent
+import android.graphics.LightingColorFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +14,7 @@ import com.squareup.picasso.Picasso
 class MainActivity : AppCompatActivity() {
 
     lateinit var btnLogin : Button
+    lateinit var imgView2: ImageView
     lateinit var imgView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +27,11 @@ class MainActivity : AppCompatActivity() {
             Log.d("OPTCLog", "Login Button Pressed")
             startActivity(Intent(this, UnitMenuActivity::class.java))
         }
+
+        //Another failed attempt at grayscale courtesy of:
+        //https://medium.com/over-engineering/manipulating-images-and-drawables-with-androids-colorfilter-25bf061843e7
+        imgView2 = findViewById(R.id.imageView3)
+        imgView2.setColorFilter(LightingColorFilter(0,255))
 
         //val fragManager = supportFragmentManager
         //val artFrag = ArtFragment()
