@@ -8,20 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.unit_recycler.*
 
 data class Units (var unitId: String, var thumbnailIcon: String, var artWork: String)
-data class Users (var userName: String, var pLVL: String, var pID: String){
-    var legendsOwned: Int = 0
-    fun updateNakama(){
-        this.legendsOwned++
-    }
-}
+
 
 class UnitRecycler : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        //dummy user
-        var currentU = Users("xpyrosh", "500", "123 453 999")
 
         //super tedious process for dummy data
         val legends = listOf<Units>(
@@ -173,18 +165,13 @@ class UnitRecycler : AppCompatActivity(){
 
         setContentView(R.layout.unit_recycler)
 
-        findViewById<TextView>(R.id.txtPLVL).text = currentU.pLVL
-        findViewById<TextView>(R.id.txtPID).text = currentU.pID
-        findViewById<TextView>(R.id.txtLegs).text = currentU.legendsOwned.toString()
+        findViewById<TextView>(R.id.txtPLVL).text = UserRepo.loggedInUser?.pLVL
+        findViewById<TextView>(R.id.txtPID).text = UserRepo.loggedInUser?.pID
+        findViewById<TextView>(R.id.txtLegs).text = UserRepo.loggedInUser?.legendsOwned.toString()
 
         unitRecycleView.also { recycler ->
             recycler.layoutManager = GridLayoutManager(this, 4, RecyclerView.VERTICAL, false)
-            recycler.adapter = UnitAdapter(legends, currentU)
+            recycler.adapter = UnitAdapter(legends)
         }
     }
-
-    override fun onResume() {
-        super.onResume()
-    }
-
 }

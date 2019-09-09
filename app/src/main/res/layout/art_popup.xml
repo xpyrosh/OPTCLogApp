@@ -13,9 +13,13 @@
                 android:layout_gravity="center_horizontal" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/unitNumber"
-            android:textColor="#FFFFFF"
-            android:layout_gravity="center_horizontal"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:shadowDx="5"
+                android:shadowDy="5"
+                android:shadowRadius="6"
+                android:shadowColor="@android:color/black"
+                android:id="@+id/unitNumber"
+                android:layout_gravity="center_horizontal"/>
 </LinearLayout>
