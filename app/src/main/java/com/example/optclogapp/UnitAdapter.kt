@@ -35,31 +35,60 @@ class UnitAdapter(var legends: List<Units>) : RecyclerView.Adapter<UnitAdapter.U
 
         val artFrag = ArtFragment()
 
+        //the text for the unit number
         unitHolder.txtName.text = legends[position].unitId
         val digit = unitHolder.txtName.text
+
+        //Load the art from the web via Picasso
         Picasso.get().load(legends[position].thumbnailIcon).into(unitHolder.imgThumbnail)
+
+        // Check if the user owns a legend before setting gray or not
+        if (!UserRepo.loggedInUser?.legendsOwned?.contains(legends[position].unitId)!!){
+            //Turn the art gray by default
+            unitHolder.imgThumbnail.setColorFilter(ColorMatrixColorFilter(ColorMatrix().also { it.setSaturation(0f) }))
+        }
+        else{
+            //If the user already owns the legend remove gray
+            unitHolder.imgThumbnail.clearColorFilter()
+        }
 
         unitHolder.imgThumbnail.setOnClickListener{ v ->
 
+            //Variable for View Context so I don't have to keep re-writing
             var unitRec = (v.context as UnitRecycler)
-            val checking = unitRec.findViewById<Switch>(R.id.switch1).isChecked
-            if (checking){
-                UserRepo.loggedInUser?.updateNakama()
 
-                val cMatrix = ColorMatrix().also { it.setSaturation(0f) }
-                unitHolder.imgThumbnail.setColorFilter(ColorMatrixColorFilter(cMatrix) )
+            val checking = unitRec.findViewById<Switch>(R.id.switch1).isChecked
+
+            if (checking){
+
+                // If the user already owns clicked unit, remove it else add it
+                if (UserRepo.loggedInUser?.legendsOwned?.contains(legends[position].unitId)!!){
+                    //removing the legend from the users owned legends
+                    UserRepo.loggedInUser?.removeNakama(legends[position].unitId)
+
+                    // Applying gray scale
+                    unitHolder.imgThumbnail.setColorFilter(ColorMatrixColorFilter(ColorMatrix().also { it.setSaturation(0f) }))
+                }
+                else {
+                    //Appending legend units to the specific users list of owned legends
+                    UserRepo.loggedInUser?.updateNakama(legends[position].unitId)
+
+                    //Since the unit is owned, remove the gray scale
+                    unitHolder.imgThumbnail.clearColorFilter()
+                }
+
             }
             else{
-                unitHolder.imgThumbnail.clearColorFilter()
+                //Showing the art only if the update switch is off
+                artFrag.modifyArt(legends[position].unitId, legends[position].artWork)
+                artFrag.show((v.context as UnitRecycler).supportFragmentManager, "art")
             }
 
             Log.d("OPTC Log", "Testing toggle status : $checking")
-            //unitRec.findViewById<TextView>(R.id.txtPID).text = user.pID
-            //unitRec.findViewById<TextView>(R.id.txtPLVL).text = user.pLVL
-            unitRec.findViewById<TextView>(R.id.txtLegs).text = UserRepo.loggedInUser?.legendsOwned.toString()
 
-            artFrag.modifyArt(legends[position].unitId, legends[position].artWork)
-            artFrag.show((v.context as UnitRecycler).supportFragmentManager, "art")
+            //Setting the owned legend count
+            unitRec.findViewById<TextView>(R.id.txtLegs).text = UserRepo.loggedInUser?.legendsOwned?.size.toString()
+
         }
     }
 

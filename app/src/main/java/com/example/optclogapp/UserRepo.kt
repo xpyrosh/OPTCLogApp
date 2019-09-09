@@ -5,10 +5,17 @@ package com.example.optclogapp
 object UserRepo {
 
     data class Users (var userName: String, var pLVL: String, var pID: String){
-        lateinit var legendsOwned: MutableList<String>
+        var legendsOwned: MutableList<String> = arrayListOf()
 
         fun updateNakama(legend: String){
-            legendsOwned.add(legend)
+            if (legend !in legendsOwned) {
+                legendsOwned.add(legend)
+            }
+        }
+        fun removeNakama(legend: String){
+            if (legend in legendsOwned) {
+                legendsOwned.remove(legend)
+            }
         }
     }
 

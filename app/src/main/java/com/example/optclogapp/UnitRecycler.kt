@@ -167,7 +167,7 @@ class UnitRecycler : AppCompatActivity(){
 
         findViewById<TextView>(R.id.txtPLVL).text = UserRepo.loggedInUser?.pLVL
         findViewById<TextView>(R.id.txtPID).text = UserRepo.loggedInUser?.pID
-        findViewById<TextView>(R.id.txtLegs).text = UserRepo.loggedInUser?.legendsOwned.toString()
+        findViewById<TextView>(R.id.txtLegs).text = UserRepo.loggedInUser?.legendsOwned?.size.toString()
 
         unitRecycleView.also { recycler ->
             recycler.layoutManager = GridLayoutManager(this, 4, RecyclerView.VERTICAL, false)
