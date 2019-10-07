@@ -52,15 +52,16 @@ class UnitAdapter(var legends: List<Units>) : RecyclerView.Adapter<UnitAdapter.U
             unitHolder.imgThumbnail.clearColorFilter()
         }
 
+        // Click listener for each individual grid item
         unitHolder.imgThumbnail.setOnClickListener{ v ->
 
             //Variable for View Context so I don't have to keep re-writing
             var unitRec = (v.context as UnitRecycler)
 
+            //Value to determine if the UpdateNakama switch was checked
             val checking = unitRec.findViewById<Switch>(R.id.switch1).isChecked
 
             if (checking){
-
                 // If the user already owns clicked unit, remove it else add it
                 if (UserRepo.loggedInUser?.legendsOwned?.contains(legends[position].unitId)!!){
                     //removing the legend from the users owned legends
@@ -76,7 +77,6 @@ class UnitAdapter(var legends: List<Units>) : RecyclerView.Adapter<UnitAdapter.U
                     //Since the unit is owned, remove the gray scale
                     unitHolder.imgThumbnail.clearColorFilter()
                 }
-
             }
             else{
                 //Showing the art only if the update switch is off
