@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "242215569880",
+    "firebase_url": "https://optclogapp-a5291.firebaseio.com",
+    "project_id": "optclogapp-a5291",
+    "storage_bucket": "optclogapp-a5291.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:242215569880:android:7ad9cb0e7dd18ab01b0aad",
+        "android_client_info": {
+          "package_name": "com.example.optclogapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "242215569880-ra81avi63qm1e9m2bhnhq233re6nihl3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.optclogapp",
+            "certificate_hash": "63cc1f246d668d278edb7d084cddde0c6e8dedd8"
+          }
+        },
+        {
+          "client_id": "242215569880-vop346deedl8s37vdstmb06ldqf1lapf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXfhlSuoLSpKLSroImvlSskEgJIjpfh1w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "242215569880-vop346deedl8s37vdstmb06ldqf1lapf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

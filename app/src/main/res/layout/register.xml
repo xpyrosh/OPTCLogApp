@@ -9,7 +9,7 @@
         tools:context=".MainActivity">
 
     <EditText
-            android:id="@+id/textUser"
+            android:id="@+id/textUserEmail"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_marginTop="324dp"
@@ -17,7 +17,7 @@
             android:ems="10"
             android:background="@android:color/white"
             android:inputType="text"
-            android:hint="Username"
+            android:hint="Email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -34,7 +34,7 @@
             android:hint="Password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textUser" />
+            app:layout_constraintTop_toBottomOf="@+id/textUserEmail" />
 
     <EditText
             android:id="@+id/textPID"
@@ -42,6 +42,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
             android:hint="Pirate ID"
+            android:inputType="text"
             android:gravity="center"
             android:background="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -57,6 +58,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:hint="Pirate Level"
+            android:inputType="text"
             android:gravity="center"
             android:background="@android:color/white"
             android:layout_margin="16dp"

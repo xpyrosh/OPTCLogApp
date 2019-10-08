@@ -8,45 +8,69 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_main.view.*
+import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
 
+    //Firebase Authentication
+    val mAuth = FirebaseAuth.getInstance()
+
     lateinit var btnLogin : Button
-    lateinit var imgView2: ImageView
-    lateinit var imgView: ImageView
+    lateinit var txtRegister : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        imgView = findViewById(R.id.imageView2)
         btnLogin = findViewById(R.id.btnLogin)
-        btnLogin.setOnClickListener{
+        txtRegister = findViewById(R.id.textRegister)
+
+        btnLogin.setOnClickListener{v ->
             Log.d("OPTCLog", "Login Button Pressed")
 
             UserRepo.init()
 
-            startActivity(Intent(this, UnitMenuActivity::class.java))
+            // Login Handling
+            val emailTxt = findViewById<View>(R.id.textUserEmail) as TextView
+            val passwordTxt = findViewById<View>(R.id.textPassword) as TextView
+
+            var email = emailTxt.text.toString()
+            var password = passwordTxt.text.toString()
+
+            if(!email.isEmpty() && !password.isEmpty()){
+                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener{ task ->
+                    if (task.isSuccessful){
+                        startActivity(Intent(this, UnitMenuActivity::class.java))
+                        Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show()
+                    }
+                    else{
+                        Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show()
+                    }
+                })
+            }
+            else{
+                Toast.makeText(this, "Fill in credentials", Toast.LENGTH_LONG).show()
+            }
+
+            //startActivity(Intent(this, UnitMenuActivity::class.java))
         }
 
-        //Another failed attempt at grayscale courtesy of:
-        //https://medium.com/over-engineering/manipulating-images-and-drawables-with-androids-colorfilter-25bf061843e7
-
-
-        //val fragManager = supportFragmentManager
-        //val artFrag = ArtFragment()
-
-        Picasso.get().load("https://www.barnesandnoble.com/blog/sci-fi-fantasy/wp-content/uploads/sites/4/2017/07/onepiece2.jpg").into(imgView)
-
-        imgView.setOnClickListener{
-            //artFrag.show(fragManager, "Art Frag")
-
+        txtRegister.setOnClickListener{v ->
+            Log.d("OPTCLog", "Register Button Pressed")
+            startActivity(Intent(this, Register :: class.java))
         }
+    }
 
+    // Firebase login handling
+    private fun login(){
+        val emailTxt = findViewById<TextView>(R.id.textUserEmail)
+        val passwordTxt = findViewById<TextView>(R.id.textPassword)
 
 
     }
