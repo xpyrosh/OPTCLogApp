@@ -18,9 +18,16 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+
+
 
 
 class UnitAdapter(var legends: List<Units>) : RecyclerView.Adapter<UnitAdapter.UnitViewHolder>() {
+    var database = FirebaseDatabase.getInstance()
+    var myRef = database.getReference("users")
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UnitViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.units, parent, false)
@@ -73,6 +80,8 @@ class UnitAdapter(var legends: List<Units>) : RecyclerView.Adapter<UnitAdapter.U
                 else {
                     //Appending legend units to the specific users list of owned legends
                     UserRepo.loggedInUser?.updateNakama(legends[position].unitId)
+
+                    myRef.setValue(UserRepo.loggedInUser)
 
                     //Since the unit is owned, remove the gray scale
                     unitHolder.imgThumbnail.clearColorFilter()

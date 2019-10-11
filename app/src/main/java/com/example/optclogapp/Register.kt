@@ -1,5 +1,6 @@
 package com.example.optclogapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -26,7 +27,7 @@ class Register : AppCompatActivity() {
 
         btnRegister = findViewById(R.id.btnRegister)
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("PID")
+        mDatabase = FirebaseDatabase.getInstance().getReference("users")
 
         btnRegister.setOnClickListener{v->
 
@@ -45,8 +46,10 @@ class Register : AppCompatActivity() {
                     if(task.isSuccessful){
                         val user = mAuth.currentUser
                         val uid = user!!.uid
-                        mDatabase.child(uid).child("PID").setValue(PID)
-                        Toast.makeText(this, "Successfully Signed In", Toast.LENGTH_LONG).show()
+                        //mDatabase.child(uid).child("PID").setValue(PID)
+                        mDatabase.push().setValue(UserRepo.Users(uid, PLVL, PID))
+                        Toast.makeText(this, "Successfully Signed Up", Toast.LENGTH_LONG).show()
+                        startActivity(Intent(this, UnitMenuActivity::class.java))
                     }
                     else{
                         Log.d("FBFAIL", "FIREBASE FAILED TO CREATE")

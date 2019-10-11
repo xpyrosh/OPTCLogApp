@@ -31,10 +31,10 @@ class MainActivity : AppCompatActivity() {
         btnLogin = findViewById(R.id.btnLogin)
         txtRegister = findViewById(R.id.textRegister)
 
+        UserRepo.init()
+
         btnLogin.setOnClickListener{v ->
             Log.d("OPTCLog", "Login Button Pressed")
-
-            UserRepo.init()
 
             // Login Handling
             val emailTxt = findViewById<View>(R.id.textUserEmail) as TextView
@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
             if(!email.isEmpty() && !password.isEmpty()){
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener{ task ->
                     if (task.isSuccessful){
+                        UserRepo.loggedInUser?.uid = mAuth.currentUser!!.uid
                         startActivity(Intent(this, UnitMenuActivity::class.java))
                         Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show()
                     }
